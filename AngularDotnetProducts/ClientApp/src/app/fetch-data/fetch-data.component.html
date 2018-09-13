@@ -1,0 +1,51 @@
+<h1>Student Record</h1>
+<form class="form-group" >
+  <div class="form-inline">
+    <b> <span>Search By its: </span></b>
+    <select name="SearchByAttribute" [(ngModel)]="SearchByAttribute">
+      <option value="">Select</option>
+      <option value="StudentName">Name</option>
+      <option value="StudentID">ID</option>
+      <option value="StudentClass">Class</option>
+    </select>
+    <input type="text" name="SearchText" [(ngModel)]="SearchText" />
+    <b><span> Order By :</span></b>
+    <select name="SortByAttribute" [(ngModel)]="SortByAttribute">
+      <option value="">Select</option>
+      <option value="StudentName">Name</option>
+      <option value="StudentID">ID</option>
+      <option value="StudentClass">Class</option>
+    </select>
+    <b><span> Range :</span></b>
+    <input type="number" name="MinRange" [(ngModel)]="MinRange" />
+    <b><span>  To :</span></b>
+    <input type="number" name="MaxRange" [(ngModel)]="MaxRange" />
+    <input type="button" class="btn btn-primary" value="Search" (click)="Search()" />
+  </div>
+</form>
+
+
+<p *ngIf="!studentData"><em>Record Not Found</em></p>
+
+<table class='table' *ngIf="studentData">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Class</th>
+      <th>Age</th>
+      <th>Fee</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of studentData">
+      <td>{{ student.studentID }}</td>
+      <td>{{ student.studentName }}</td>
+      <td>{{ student.studentClass }}</td>
+      <td>{{ student.studentAge }}</td>
+      <td>{{ student.studentFees }}</td>
+      <td>{{ student.date }}</td>
+    </tr>
+  </tbody>
+</table>
